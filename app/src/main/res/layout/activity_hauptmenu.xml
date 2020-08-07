@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/hauptmenue_hintergrund_quer"
+    android:orientation="vertical" >
+
+    <!-- Autoren: Kurt und Julia -->
+
+    <ImageView
+        android:id="@+id/schrifthm1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/schrifthm" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25">
+
+            <Button
+                android:id="@+id/Button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/buttons_hm"
+                android:text="@string/button1"
+                android:textColor="@color/weiß" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25">
+
+            <Button
+                android:id="@+id/Button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/buttons_hm"
+                android:text="@string/button2"
+                android:textColor="@color/weiß" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25">
+
+            <Button
+                android:id="@+id/Button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/buttons_hm"
+                android:text="@string/button4"
+                android:textColor="@color/weiß" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25">
+
+            <Button
+                android:id="@+id/Button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/buttons_hm"
+                android:text="@string/button5"
+                android:textColor="@color/weiß" />
+        </TableRow>
+    </TableLayout>
+
+    <!--   <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/Button1"
+        android:layout_below="@+id/Button1"
+
+        android:text="Switch" />-->
+
+
+    <!-- Schummel-Button, um schnell zur "Enter Name"-Highscore-Seite zu kommen! -->
+
+    <Button
+        android:id="@+id/SchummelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:text="EHS"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/icon4_hell" />
+
+    <ImageView
+        android:id="@+id/icon2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/icon6_dunkel" />
+
+     <ImageView
+         android:id="@+id/icon3"
+         android:layout_width="48dp"
+         android:layout_height="48dp"
+         android:layout_above="@+id/SchummelButton"
+         android:layout_marginRight="14dp"
+         android:layout_toLeftOf="@+id/icon"
+         android:src="@drawable/icon5_mittel" />
+	
+</RelativeLayout>

@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools"
+   		android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:background="@color/black"
+	    android:clickable="false"
+	    android:orientation="vertical"
+	    android:scrollbarAlwaysDrawVerticalTrack="true"
+	    android:scrollbars="vertical"
+	    tools:context=".HilfeActivity" >
+
+<!-- Autor: Julia -->
+	
+	<!-- Kleines Fenster, in dem man scrollen kann.
+	Nimmt allerdings nur ein "Objekt" -> alles darin muss noch einmal in einem
+	RelativeLayout verpackt sein.
+	Dann noch einmal RelativeLayout komplett herum, damit ScrollView und der
+	"Zurueck"-Button in einem Fenster.
+	Mehr Infos zum Button: Siehe unten-->
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:id="@+id/ScrollView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="200dp"
+	    android:background="@color/black" >
+	
+		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    	xmlns:tools="http://schemas.android.com/tools"
+	   		android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:background="@color/black"
+		    android:clickable="false"
+		    android:orientation="vertical"
+		    android:scrollbarAlwaysDrawVerticalTrack="true"
+		    android:scrollbars="vertical" >
+	        
+		    <!-- Erklaerung + 1.Zurueckwerfen -->
+		    <TextView
+	    	        android:id="@+id/hite1a"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_alignParentTop="true"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1a"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild01"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1a"
+		        android:src="@drawable/hilfe01zurueck" />
+		    <!-- 1. Text + 2.Folgen -->
+		    <TextView
+	    	        android:id="@+id/hite1b"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_below="@+id/hitebild01"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1b"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild02"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1b"
+		        android:src="@drawable/hilfe02folgen" />	    
+		    <!-- 2. Text + 3.Flutschen -->
+		    <TextView
+	    	        android:id="@+id/hite1c"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_below="@+id/hitebild02"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1c"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild03"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1c"
+		        android:src="@drawable/hilfe03flutschen" />
+		   	<!-- 3. Text + 4.Menue -->
+		    <TextView
+	    	        android:id="@+id/hite1d"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_below="@+id/hitebild03"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1d"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild04"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1d"
+		        android:src="@drawable/hilfe04menue" />
+		   	<!-- 4. Text + 5.Falle -->
+		    <TextView
+	    	        android:id="@+id/hite1e"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_below="@+id/hitebild04"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1e"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild05"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1e"
+		        android:src="@drawable/hilfe05falle" />
+		   	<!-- 5. Text + 6.Eingang -->
+		    <TextView
+	    	        android:id="@+id/hite1f"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_below="@+id/hitebild05"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1f"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild06"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1f"
+		        android:src="@drawable/hilfe06eingang" />
+		    <!-- 6. Text + 7.Ausgang -->
+		    <TextView
+	    	        android:id="@+id/hite1g"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_alignParentLeft="true"
+	    	        android:layout_below="@+id/hitebild06"
+	    	        android:clickable="false"
+	    	        android:text="@string/hite1g"
+	    	        android:textColor="@color/weiß" />
+		    <ImageView
+		        android:id="@+id/hitebild07"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_below="@+id/hite1g"
+		        android:src="@drawable/hilfe07ausgang" />
+
+
+		    
+		    
+		    
+	    	    <!--  <ImageView
+	    	    android:id="@+id/imageView1"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:src="@drawable/textversuch" />
+	    	    -->
+	
+		    
+	        
+		</RelativeLayout>
+	</ScrollView>
+	
+	<!-- Damit Button erst erreichbar, wenn bis nach unten gescrollt, dafür 
+	Textfeld größer	(und man sieht bei "Graphical Layout" den gesamten Text):
+	android:layout_height="fill_parent" ganz oben in ScrollView statt
+	android:layout_height="200dp"
+	Aeusserstes "RelativeLayout" weg und den Button direkt unter hite1h
+	Dazu noch
+	android:layout_alignParentBottom="true"
+	weg
+	und stattdessen
+	android:layout_below="@+id/hite1h"
+	hin
+	-->
+	
+	<Button
+	    	        android:id="@+id/hitebutton1"
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_centerHorizontal="true"
+	    	        android:layout_alignParentBottom="true"
+	    	        android:text="@string/retour"
+	    	        android:onClick="onClick" />
+</RelativeLayout>

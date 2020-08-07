@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wackelpudding</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_hilfe">Hilfe</string>
+    <string name="menu_game_start">Spielstart</string>
+    <string name="menu_highscore">Highscore</string>
+    <string name="menu_main">Hauptseite</string>
+    <string name="menu_game_over">GameOver</string>
+
+    <string name="button1">Spiel starten</string>
+    <string name="button2">Einstellungen</string>
+    <string name="button3">Highscore</string>
+    <string name="button4">Hilfe</string>
+    <string name="button5">Tutorial</string>
+    <string name="test1">Hier startet das Spiel</string>
+    <string name="test2">Einstellungen</string> 
+    <string name="test3">Highscore</string>
+    <string name="Titel">HYPED UP IN WACKELPUDDING</string>
+    <string name="optbutton1">Musik</string>
+    <string name="optbutton2">Sprache</string>
+    <string name="optbutton3"></string>
+    <string name="retour">Zurück</string>
+    <string name="box1">EIN</string>
+    <string name="box2">AUS</string>
+    <string name="video_skip">Überspringen</string>
+    <string name="enter_hs">Gib deinen Namen ein</string>
+    <string name="allesklar">Eintragen</string>
+    <string name="enthst1a">Du hast</string>
+    <string name="enthst1b">Punkte erreicht!</string>
+    <string name="enthst1c">Bitte trage deinen Namen ein, um deinen Score zu speichern!</string>
+    <string name="dialog0">Pausemenü</string>
+    <string name="dialog1">Fortsetzen</string>
+    <string name="dialog2">Musik AN</string>
+    <string name="dialog3">Hilfe</string>
+    <string name="tut0_ok">OK</string>
+    <string name="tut0_text1">
+    Das Ziel von Wackelpudding ist es, den Ausgang/Exit
+
+
+    </string>
+    <string name="tut0_text2">
+    zu erreichen.
+    \n Fortbewegung geschieht stets geradlinig und indirekt,
+    \n indem man mit Blöcken
+    </string>
+    <string name="tut0_text3">
+     interagiert, um so die Richtung zu ändern.
+
+    </string>
+
+
+
+    <string name="dialog4">Hauptmenü</string>
+    <string name="dialog5">Musik AUS</string>
+
+
+
+    <string name="trans1">Nächstes Level</string>
+    <string name="trans3">Hauptmenü</string>
+    
+    <string name="hite1a">Hallo, ich heiße Nick!
+    \nIch wurde wegen meiner, nennen wir es einmal untypischen Essgewohnheiten bei Wackelpudding (nein, ich bin nicht süchtig danach! - okay, vielleicht ein bisschen) in mein Notebook gezogen und bin nun hier gefangen.
+    \nKannst du mir bitte helfen?
+	\n
+	\n
+	\nEs gibt drei Manöver, die du benutzen kannst, um mir herauszuhelfen:
+	\n
+	\n1. Von einem Block zurückgeworfen werden:
+	</string>
+    <string name="hite1b">Drücke diesen Button und ich werde vom nächsten Block zurückgeworfen (wobei sich dieser im Uhrzeigersinn dreht) und anschließend vom vorherigen wieder zurück. Ich weiß, ich lande dabei wieder an derselben Stelle, an der ich auch schon vorhin war, aber immerhin habe ich den nächsten Block gedreht!
+    \n
+	\n2. Der Richtung eines Blocks folgen</string>
+    <string name="hite1c">Achte zuerst darauf, dass die diagonale Seite des Blocks zu mir schaut (sonst stecke ich in der Patsche), denn ich werde in einem 90-Grad-Winkel davon abprallen. Auf diese Weise kann ich auch Ebenen über oder unter mir erreichen.
+    \n
+	\n3.Durch einen Block flutschen:
+	</string>
+	<string name="hite1d">Tja, ich kann durch Wackelpudding-Blöcke flutschen, was richtig Spaß machen würde, wäre ich hier nicht GEFANGEN!
+	\n
+	\n
+	\nPausenmenü
+	</string>
+	<string name="hite1e">Indem du den letzten Button drückst, kannst du das Pausenmenü öffnen. Aber ich bin mir sicher, dass du mich nicht hängen lassen würdest, oder?
+	\n
+	\nFalle? Falle!	    
+	</string>
+	<string name="hite1f">Oh, diese Dinger? *******! Pass’ einfach auf, dass ich nicht in eine davon gerate (das Level ist ebenfalls von Fallen umgeben), denn ich möchte nur ungern ein Leben verlieren. Übrigens, ich habe insgesamt 3 Leben, aber denk’ nicht mal dran!
+	\n
+	\nDer Eingang
+	</string>
+	<string name="hite1g">Einfach der Anfang einer (hoffentlich nicht so) langen Reise.
+	\n
+	\nDer Ausgang
+	</string>
+
+	
+	
+    <string-array name="Sprachnamen_array">
+        <item>German</item>
+        <item>English</item>
+    </string-array>
+
+    <string name="title_activity_hauptmenu">Hauptmenu</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_level0">GameStart</string>
+    <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="title_activity_option">OptionActivity</string>
+    <string name="title_activity_EnterHS">EnterHSActivity</string>
+    <string name="title_activity_Hilfe">HilfeActivity</string>
+
+    <string name="title_activity_uebergang_t_">Uebergang_t_Activity</string>
+    <string name="title_activity_level1">Level1</string>
+    <string name="title_activity_hilfe">HilfeActivity</string>
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_enter_hs">EnterHSActivity</string>
+    <string name="title_activity_game_over">GameOverActivity</string>
+    <string name="title_activity_level0_done">Level0DoneActivity</string>
+    <string name="title_activity_level1_done">Level1DoneActivity</string>
+    <string name="title_activity_level2">Level2Activity</string>
+    <string name="title_activity_level2_done">Level2DoneActivity</string>
+    <string name="title_activity_level3">Level3Activity</string>
+    <string name="title_activity_level3_done">Level3DoneActivity </string>
+
+    
+</resources>

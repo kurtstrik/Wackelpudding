@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.wackelpudding"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+
+        android:targetSdkVersion="15" />
+
+    <application
+        android:icon="@drawable/ic_pudding"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.wackelpudding.Hauptmenu"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+
+                <!-- Allererste Activity, die aufgerufen wird -->
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.OptionActivity"
+            android:label="@string/title_activity_option"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level0Activity"
+            android:label="@string/title_activity_game_start"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.HilfeActivity"
+            android:label="@string/title_activity_hilfe"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.GameOverActivity"
+            android:label="@string/title_activity_game_over"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level0DoneActivity"
+            android:label="@string/title_activity_level0_done"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level2Activity"
+            android:label="@string/title_activity_level2"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level2DoneActivity"
+            android:label="@string/title_activity_level2_done"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level3Activity"
+            android:label="@string/title_activity_level3"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level3DoneActivity"
+            android:label="@string/title_activity_level3_done"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level1Activity"
+            android:label="@string/title_activity_level1"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.Level1DoneActivity"
+            android:label="@string/title_activity_level1_done"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name="com.example.wackelpudding.TutorialActivity"
+            android:label="Tutorial"
+            android:screenOrientation="landscape">
+        </activity>
+
+
+    </application>
+
+</manifest>

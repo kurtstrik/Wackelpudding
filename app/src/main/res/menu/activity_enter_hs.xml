@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/enter_hs"
+        android:title="@string/enter_hs"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+</menu>

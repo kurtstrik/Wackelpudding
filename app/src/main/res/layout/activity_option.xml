@@ -1,0 +1,68 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/hauptmenue_hintergrund_quer"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/OptBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/retour" />
+
+    <!--
+    <TextView
+        android:id="@+id/Text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/test2"
+        android:textColor="@color/grun"
+        android:textSize="20dip"
+        tools:context=".OptionActivity" />
+    -->
+
+    <TextView
+        android:id="@+id/Music_on_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/OptBack"
+        android:text="@string/optbutton1"
+        android:textColor="@color/weiß" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Music_on_off"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@+id/OptBack"
+        android:text="@string/box1"
+        android:textColor="@color/weiß" />
+
+    <TextView
+        android:id="@+id/OptButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox1"
+        android:layout_centerVertical="true"
+        android:text="@string/optbutton2"
+        android:textColor="@color/weiß" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox1"
+        android:layout_below="@+id/OptButton2"
+        android:entries="@array/Sprachnamen_array" />
+
+</RelativeLayout>

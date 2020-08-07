@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wackelpudding</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_hilfe">Help</string>
+    <string name="menu_game_start">GameStart</string>
+    <string name="menu_highscore">Highscore</string>
+    <string name="menu_main">Main</string>
+    <string name="menu_game_over">GameOver</string>
+
+    <string name="button1">Start Game</string>
+    <string name="button2">Options</string>
+    <string name="button3">Highscore</string>
+    <string name="button4">Help</string>
+    <string name="button5">Tutorial</string>
+    <string name="test1">Here starts the game</string>
+    <string name="test2">OPTIONEN</string>
+    <string name="test3">HIGHSCORE</string>
+    <string name="Titel">HYPED UP IN WACKELPUDDING</string>
+    <string name="optbutton1">Music</string>
+    <string name="optbutton2">Language</string>
+    <string name="optbutton3"></string>
+    <string name="retour">Back</string>
+    <string name="box1">ON</string>
+    <string name="box2">OFF</string>
+    <string name="video_skip">Skip</string>
+    <string name="enter_hs">Enter your name</string>
+    <string name="allesklar">Enter</string>
+    <string name="enthst1a">You have reached</string>
+    <string name="enthst1b">points!</string>
+    <string name="enthst1c">Please type in your name to save your score!</string>
+    <string name="dialog0">Pausemenu</string>
+    <string name="dialog1">Continue</string>
+    <string name="dialog2">Music ON</string>
+    <string name="dialog3">Help</string>
+    <string name="tut0_ok">OK</string>
+    <string name="tut0_text1">
+    Wackelpudding is a game where you need to reach the exit
+
+
+    </string>
+    <string name="tut0_text2">
+    .
+    \n Movement though is only possible through indirect means by interacting with blocks
+    </string>
+    <string name="tut0_text3">
+     \n , altering your course.
+
+
+    </string>
+
+
+
+    <string name="dialog4">Main Menu</string>
+    <string name="dialog5">Music OFF</string>
+
+    <string name="trans1">Next Level</string>
+    <string name="trans3">Main Menu</string>
+    <string name="hite1a">Hi, my name is Nick!
+    \nI got sucked into my notebook because of my, let’s call it unusual eating habit regarding Jell-O (no, I’m not addicted! - okay, maybe a little bit) and now I’m stuck.
+	Please help me?
+	\n
+	\n
+	\nThere are three maneuvers you can use to help me escape:
+	\n
+	\n1. Getting thrown back by a block:
+</string>
+    <string name="hite1b"> By pressing this button I will be thrown back from the next block (which will also rotate it clockwise) and then again be thrown back from the last one. I know, I’ll land on the exact same spot I was before but hey, I managed to rotate the next block!
+	\n
+	\n2. Following a block’s direction:</string>
+    <string name="hite1c">You first have to make sure that the diagonal side of the next block faces me (or I’m screwed) because I will simply bounce off at a 90 degree angle. This way I’m able to reach the levels above or below me.
+	\n
+	\n3. Sliding through a block:
+</string>
+    <string name="hite1d">Well, I can slide through Jell-O-blocks, which would be kinda fun if I wasn’t STUCK HERE!
+	\n
+	\n
+	\nPause Menu
+</string>
+    <string name="hite1e">By pressing the last little button you can open the pause menu. But I’m sure you wouldn’t leave me here, would you?
+	\n
+	\nTraps? Traps!	    
+</string>
+    <string name="hite1f">Oh, those things? ****! Just pay attention, so I don’t get caught in one of them (there are even traps surrounding the level), I really don’t want to lose a life. Btw, I have 3 lifes but don’t even think about it!
+	\n
+	\nThe Entrance
+</string>
+    <string name="hite1g">Just the beginning of a (hopefully not so) long journey.
+	\n
+	\nThe Exit
+</string>
+
+
+    <string-array name="Sprachnamen_array">
+        <item>Deutsch</item>
+        <item>Englisch</item>
+    </string-array>
+
+
+    <string name="title_activity_hauptmenu">Hauptmenu</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_level0">GameStart</string>
+    <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="title_activity_option">OptionActivity</string>
+    <string name="title_activity_EnterHS">EnterHSActivity</string>
+    <string name="title_activity_Hilfe">HilfeActivity</string>
+    <string name="title_activity_uebergang_t_">Uebergang_t_Activity</string>
+    <string name="title_activity_level1">Level1Activity</string>
+    <string name="title_activity_hilfe">HilfeActivity</string>
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="title_activity_enter_hs">EnterHSActivity</string>
+    <string name="title_activity_game_over">GameOverActivity</string>
+    <string name="title_activity_level0_done">Level0DoneActivity</string>
+    <string name="title_activity_level1_done">Level1DoneActivity</string>
+    <string name="title_activity_level2">Level2Activity</string>
+    <string name="title_activity_level2_done">Level2DoneActivity</string>
+    <string name="title_activity_level3_done">Level3DoneActivity </string>
+    <string name="title_activity_level3">Level3Activity</string>
+
+</resources>
