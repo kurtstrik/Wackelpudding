@@ -1,5 +1,5 @@
 # Wackelpudding
-1st Android project
+1st Android project , ein kleines 2D Spiel
 
 Diese Applikation startet und läuft automatisch im Landscape/Waagrechten Modus
 
