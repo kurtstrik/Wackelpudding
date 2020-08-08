@@ -5,8 +5,6 @@
     android:background="@drawable/hauptmenue_hintergrund_quer"
     android:orientation="vertical" >
 
-    <!-- Autoren: Kurt und Julia -->
-
     <ImageView
         android:id="@+id/schrifthm1"
         android:layout_width="wrap_content"
@@ -82,18 +80,6 @@
                 android:textColor="@color/weiß" />
         </TableRow>
     </TableLayout>
-
-    <!--   <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/Button1"
-        android:layout_below="@+id/Button1"
-
-        android:text="Switch" />-->
-
-
-    <!-- Schummel-Button, um schnell zur "Enter Name"-Highscore-Seite zu kommen! -->
 
     <Button
         android:id="@+id/SchummelButton"

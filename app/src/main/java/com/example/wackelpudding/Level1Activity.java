@@ -455,9 +455,10 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 				background.stop();
 				background.release();
 				GameView.surfaceDestroyed(GameView.getHolder());
+				dialog.cancel();
 				Intent myIntent = new Intent(Level1Activity.this, Hauptmenu.class);
 				myIntent.putExtra("checker", volume);
-				dialog.cancel();
+
 				startActivity(myIntent);
 				
 			}

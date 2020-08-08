@@ -42,10 +42,20 @@ public class Hauptmenu extends Activity implements OnClickListener{
         
         Option =(Button)findViewById(R.id.Button2);
         Option.setOnClickListener(this);
-        
+
+
+   		background = MediaPlayer.create(this, R.raw.jazz);
+		background.setLooping(true);
+
+
         volume = getIntent().getBooleanExtra("checker", volume);
         if (volume) {
-        	Option.setText(getResources().getString(R.string.dialog2));
+        	if(!background.isPlaying()) {
+
+				background.setVolume(0.3f, 0.3f);
+				background.start();
+				Option.setText(getResources().getString(R.string.dialog2));
+			}
         }
         else {
         	Option.setText(getResources().getString(R.string.dialog5));
@@ -70,8 +80,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
 		mittel.startAnimation(b);
 		Animation c = AnimationUtils.loadAnimation(this, R.anim.menu_load);
 		dunkel.startAnimation(c);
-		background = MediaPlayer.create(this, R.raw.jazz);
-		background.setLooping(true);
+
         
     }
 
@@ -87,6 +96,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
 
         	if (v==Start) {
 				background.stop();//aktuelle Musik vor Wechsel beenden
+				background.release();
         	Intent myIntent = new Intent(this, Level0Activity.class);
         	myIntent.putExtra("checker", volume);
         	startActivity(myIntent);
@@ -97,14 +107,17 @@ public class Hauptmenu extends Activity implements OnClickListener{
         		
         		if (volume) {
 					//Musik deaktivieren
-        			background.stop();
+
+					if(background.isPlaying())
+        				background.pause();
+
         			Option.setText(getResources().getString(R.string.dialog5));
         			volume = false;
         		}
         		else {
 
         			//Musik starten
-        			if(!background.isPlaying()) {
+					if(!background.isPlaying()) {
 						background.setVolume(0.3f, 0.3f);
 						background.start();
 					}
@@ -118,6 +131,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
 
         	else if(v==Tutorial){
 				background.stop();//aktuelle Musik vor Wechsel beenden
+				background.release();
 				Intent myIntent = new Intent(this, TutorialActivity.class);
 				myIntent.putExtra("checker", volume);
 				startActivity(myIntent);

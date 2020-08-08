@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name="com.example.wackelpudding.Level0Activity"
-            android:label="@string/title_activity_game_start"
+            android:label="@string/title_activity_level0"
             android:screenOrientation="landscape" >
         </activity>
         <activity

@@ -9,14 +9,6 @@
 	    android:scrollbars="vertical"
 	    tools:context=".HilfeActivity" >
 
-<!-- Autor: Julia -->
-	
-	<!-- Kleines Fenster, in dem man scrollen kann.
-	Nimmt allerdings nur ein "Objekt" -> alles darin muss noch einmal in einem
-	RelativeLayout verpackt sein.
-	Dann noch einmal RelativeLayout komplett herum, damit ScrollView und der
-	"Zurueck"-Button in einem Fenster.
-	Mehr Infos zum Button: Siehe unten-->
 	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:id="@+id/ScrollView"
 	    android:layout_width="fill_parent"
@@ -145,35 +137,9 @@
 		        android:layout_height="wrap_content"
 				android:layout_below="@+id/hite1g"
 		        android:src="@drawable/hilfe07ausgang" />
-
-
-		    
-		    
-		    
-	    	    <!--  <ImageView
-	    	    android:id="@+id/imageView1"
-	    	    android:layout_width="wrap_content"
-	    	    android:layout_height="wrap_content"
-	    	    android:src="@drawable/textversuch" />
-	    	    -->
-	
-		    
 	        
 		</RelativeLayout>
 	</ScrollView>
-	
-	<!-- Damit Button erst erreichbar, wenn bis nach unten gescrollt, dafür 
-	Textfeld größer	(und man sieht bei "Graphical Layout" den gesamten Text):
-	android:layout_height="fill_parent" ganz oben in ScrollView statt
-	android:layout_height="200dp"
-	Aeusserstes "RelativeLayout" weg und den Button direkt unter hite1h
-	Dazu noch
-	android:layout_alignParentBottom="true"
-	weg
-	und stattdessen
-	android:layout_below="@+id/hite1h"
-	hin
-	-->
 	
 	<Button
 	    	        android:id="@+id/hitebutton1"

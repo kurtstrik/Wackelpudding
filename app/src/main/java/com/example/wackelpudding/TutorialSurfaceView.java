@@ -374,16 +374,16 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
                 if (figur.getMovement().getxDirection()==Movement.right) {
                     if (figur.getBitmap()==einrollen){
 
-                        if(currentpic==blockd2) {
+                        if(currentpic==blocka2) {
                             figur.getMovement().setxDirection(Movement.none);
-                            figur.getMovement().setyDirection(Movement.down);
+                            figur.getMovement().setyDirection(Movement.up);
                             figur.setBitmap(einrollen2);
 
                         }
 
                     }
                     else if(figur.getBitmap()==ausbreiten) {
-                        if(currentpic==blockd2) {
+                        if(currentpic==blocka2) {
                             figur.getMovement().setxDirection(Movement.left);
 
                         }
