@@ -28,19 +28,11 @@ public class Level2DoneActivity extends Activity implements OnClickListener{
 	
 	}
 
-	/*
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_level2_done, menu);
-		return true;
-	}*/
-	
 	@Override
     public void onClick(View v) {
 
 		//nimmt den boolean Wert aus dem vorherigen Aufruf und gibt diesen weiter
-
+		//takes the boolean from previous call and passes it on
 		volume = getIntent().getBooleanExtra("checker", volume);
         	
         	if (v==next) {

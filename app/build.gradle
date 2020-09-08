@@ -7,7 +7,10 @@ android {
     defaultConfig {
         applicationId "com.example.wackelpudding"
         minSdkVersion 10
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 15
+
+        setProperty('archivesBaseName', "Wackelpudding")
     }
 
     buildTypes {

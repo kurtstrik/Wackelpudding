@@ -28,11 +28,13 @@ public class HilfeActivity extends Activity implements OnClickListener {
 	@Override
     public void onClick(View v) {
 
-	//	volume = getIntent().getBooleanExtra("checker", volume);
-   //   Intent myIntent = new Intent(this, Hauptmenu.class);
-    //  myIntent.putExtra("checker", volume);
-   //   startActivity(myIntent);
-    	finish();
+		/*
+		volume = getIntent().getBooleanExtra("checker", volume);
+        Intent myIntent = new Intent(this, Hauptmenu.class);
+        myIntent.putExtra("checker", volume);
+      startActivity(myIntent);*/
+
+    	finish(); //zurueck zu vorheriger Hauptmenu Activity | resume back to previous Hauptmenu Activity
     }
 
 }

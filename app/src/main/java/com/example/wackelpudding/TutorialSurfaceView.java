@@ -15,15 +15,16 @@ import android.content.Context;
 import android.view.SurfaceHolder;
 
 import java.util.*;
-/** @author-Kurt
- * Teile des Codes aus den Folien, andere Teile aus der Quelle:
+/**
+ * Teile aus der Quelle:
+ * references used:
+ *
  * http://obviam.net/index.php/displaying-graphics-with-android/
  * http://obviam.net/index.php/moving-images-on-the-screen-with-android/*/
 public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
 
     private Tut_Thread thread;
-    private boolean touched;//wird ein Button gedrueckt?
-
+    private boolean touched;//wird ein Button gedrueckt? | was a button touched?
 
   //  private Bitmap bild = BitmapFactory.decodeResource(getResources(), R.drawable.tut1);
     private  Bitmap bild1 = BitmapFactory.decodeResource(getResources(), R.drawable.tut1);
@@ -31,7 +32,7 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
     private  Bitmap bild3 = BitmapFactory.decodeResource(getResources(), R.drawable.tut3);
     private  Bitmap bild4 = BitmapFactory.decodeResource(getResources(), R.drawable.tut4);
 
-    //Bitmaps fuer die Figur Posen
+    //Bitmaps fuer die Figur Posen | bitmaps for the figure poses
 
     private Bitmap einrollen = BitmapFactory.decodeResource(getResources(), R.drawable.einroller_1);
     private Bitmap einrollen2 = BitmapFactory.decodeResource(getResources(), R.drawable.einroller_2);
@@ -51,16 +52,16 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
     private Figur figur;
 
-    //hier werden 7 Bloecke gebraucht
+    //hier werden 7 Blocke gebraucht | 7 blocks are needed
     private Vector<AnimatedBlock> blocke = new Vector<AnimatedBlock>(7);
 
-    //Bitmaps fuer Rotation der Bloecke
+    //Bitmaps fuer Rotation der Bloecke | bitmaps for rotation of the blocks
     private Bitmap blocka = BitmapFactory.decodeResource(getResources(), R.drawable.block_a);
     private Bitmap blockb = BitmapFactory.decodeResource(getResources(), R.drawable.block_b);
     private Bitmap blockc = BitmapFactory.decodeResource(getResources(), R.drawable.block_c);
     private Bitmap blockd = BitmapFactory.decodeResource(getResources(), R.drawable.block_d);
 
-    //Bitmap fuer fixen Block
+    //Bitmaps fuer fixen Block | bitmaps for a fixed block
     private Bitmap blocka2 = BitmapFactory.decodeResource(getResources(), R.drawable.block_a_locked);
     private Bitmap blockc2 = BitmapFactory.decodeResource(getResources(), R.drawable.block_c_locked);
     private Bitmap blockd2 = BitmapFactory.decodeResource(getResources(), R.drawable.block_d_locked);
@@ -70,11 +71,11 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
     private Bitmap Eingang = BitmapFactory.decodeResource(getResources(), R.drawable.eingang);
     private Bitmap Ausgang = BitmapFactory.decodeResource(getResources(), R.drawable.ausgangb);
 
-    private int parameter = 10;//Geschwindigkeit der Figur
+    private int parameter = 10;//Geschwindigkeit der Figur | figure speed
     private int width = bild1.getWidth();
     private int height = bild1.getHeight();
 
-    //diverse wichtige Koordinaten zur Platzierung
+    //diverse wichtige Koordinaten zur Platzierung | various important coordinates for placing the objects
     private int x0;
     private int x1;
     private int x2;
@@ -93,10 +94,10 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
     private int y3;
     private int y4;
 
-    //dazu da um bei Levelabschluss Musik richtig zu beenden
+    //dazu da um bei Levelabschluss Musik richtig zu beenden | properly stops music when quitting
     private MediaPlayer helper;
 
-    private int level = 1;
+    private int level = 1;//gibt an in welcher Phase das Tutorial ist | displays the current phase of the tutorial
 
     //Initialisierungen
     public TutorialSurfaceView(Context context) {
@@ -125,7 +126,8 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
         figur = new Figur(einrollen, x5, y1);
 
-        //erstellt die Bloecke an den entsprechenden Stellen
+        //erstellt alle notwendigen Blocke
+        //creates all necessary blocks for the tutorial
         blocke.add(new AnimatedBlock(blocka2,x10,y1));
         blocke.add(new AnimatedBlock(blockd2,x10,y0));
         blocke.add(new AnimatedBlock(blocka2,x5,y2));
@@ -135,24 +137,25 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
         blocke.add(new AnimatedBlock(blockc,blockd,blocka,blockb,x6,y4));
 
 
-        thread = new Tut_Thread(getHolder(), this); // gameloop erstellen
+        thread = new Tut_Thread(getHolder(), this); // gameloop
 
-        setFocusable(true); // um events handeln zu koennen
+        setFocusable(true); // um events handeln zu koennen | to handle events
     }
 
-
+    /**zeichnet alle nichtstatischen Objekte in der GameLoop auf den canvas
+     *
+     * draws all non static objects in the gameloop on the canvas
+     * */
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(0, PorterDuff.Mode.CLEAR);
-        // canvas.drawColor(Color.BLACK);
 
-       // canvas.drawBitmap(bild,0,0,null);
+        canvas.drawColor(0, PorterDuff.Mode.CLEAR);
 
 
         //je nachdem in welcher Phase wir sind, wird dementsprechend alles aufgebaut
-
+        //setting up the level according to the current phase
         switch(level){
            case 1:
-                canvas.drawBitmap(bild1,0,0,null);//zuerst Hintergrund zeichnen
+                canvas.drawBitmap(bild1,0,0,null);
 
                 blocke.get(0).draw(canvas);
 
@@ -208,11 +211,7 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
         figur.draw(canvas);
     }
 
-    //wird in jedem Updatezyklus aufgerufen
     public void update() {
-
-
-        //falls die Figur ans Ziel kommt
 
         if(ziel1()==true){
             touched = false;
@@ -230,7 +229,7 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
             level = 4;
         }
 
-        else if(ziel()==true){//am Endziel angekommen -> zum Hauptmenu
+        else if(ziel()==true){//Endgoal
 
 
             /*Code dazu aus: http://www.anddev.org/surfaceview_to_new_activity_issue-t8376.html
@@ -246,7 +245,8 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
             ((Activity)context).startActivity(myIntent);
         }
 
-        //ist ein Button gedrueckt worden oder nicht
+        //solange anfangs kein Button gedrueckt wird, bewegt sich die Figur nicht
+        //as long as there is no button input, the figure won't move
         if (touched == false) {
             figur.getMovement().setxv(0);
             figur.getMovement().setyv(0);
@@ -257,7 +257,8 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
             figur.getMovement().setyv(parameter);
         }
 
-        //wenn die Figur an ausserhalb des Levels kommt, alle Einstellungen resetten
+        //wenn die Figur ausserhalb des Levels kommt
+        //if the figure gets outofbounds
         if (outofBounds()==true) {
 
             switch(level){
@@ -315,9 +316,9 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
         }
 
-        int t1 = collision();//ermittelt ob/mit welchem Block kollidiert wurde
+        int t1 = collision();//ermittelt ob/mit welchem Block kollidiert wurde | gets collision index
 
-        //Kollisionsbehandlung
+        //Kollisionsbehandlung | check for collision
         if(t1>=0) {
 
             //Hilfsvariablen
@@ -327,11 +328,11 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
             if(level==1){
 
-                if (figur.getMovement().getxDirection()==Movement.right) {//von welcher Seite kommt die Figur?
-                    if (figur.getBitmap() == ausbreiten) {//welche Pose hat die Figur?
-                        if (currentpic == blocka2) {//auf was kollidiert die Figur?
+                if (figur.getMovement().getxDirection()==Movement.right) {//von welcher Seite kommt die Figur? | figure comes from where?
+                    if (figur.getBitmap() == ausbreiten) {//welche Pose hat die Figur? | which pose?
+                        if (currentpic == blocka2) {//auf was kollidiert die Figur? | collision on what?
 
-                            figur.getMovement().setxDirection(Movement.left);//neue Richtung der Figur setzen
+                            figur.getMovement().setxDirection(Movement.left);//neue Richtung der Figur setzen | set new direction
 
                         }
                     } else {
@@ -594,6 +595,10 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
     }
 
 
+    /**
+     * ist die Figur außerhalb des Levels?
+     * is the figure outOfBounds?
+     * */
     public boolean outofBounds(){
         int collideradiusx = figur.getMovement().getxv();
         int collideradiusy = figur.getMovement().getyv();
@@ -609,15 +614,16 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
     }
 
-    /**retourniert jenen Blockindex, mit dem die Figur kollidiert
+    /**retourniert jenen Blockindex, mit dem die Figur kollidiert.
+     * returns respective blockindex, colliding with the figure.
      *
-     * @return int Index aus der block-Liste mit dem die Figur eine Kollision hat
+     * @return int Index aus der Blockliste, der den Kollisionsblock enthaelt
      * */
     public int collision() {
         int collideradiusx = figur.getMovement().getxv();
         int collideradiusy = figur.getMovement().getyv();
 
-        //die Koordinaten der Bloecke
+        //die Koordinaten der Bloecke | block coordinates
         int blockx0 = blocke.get(0).getX();
         int blocky0 = blocke.get(0).getY();
 
@@ -641,41 +647,45 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
         switch(level) {//in welchem Level befinden wir uns?
             case 1:
-                //kontrolliere mit welchem Block genau die Figur kollidiert
+                //kontrolliere mit welchem Block Index genau die Figur kollidiert
+                //get the respective block index colliding with the figure
                 if ( (figur.getX()>blockx0 - collideradiusx && figur.getX()<blockx0 + collideradiusx) &&
                         (figur.getY()>blocky0 - collideradiusy && figur.getY()<blocky0 + collideradiusy) ) {
 
                     return 0;
                 }
-                else//falls keine Kollision
+                else//falls keine Kollision | no collision
                     return -1;
 
 
             case 2:
 
-                //kontrolliere mit welchem Block genau die Figur kollidiert
+                //kontrolliere mit welchem Block Index genau die Figur kollidiert
+                //get the respective block index colliding with the figure
                 if ( (figur.getX()>blockx1 - collideradiusx && figur.getX()<blockx1 + collideradiusx) &&
                         (figur.getY()>blocky1 - collideradiusy && figur.getY()<blocky1 + collideradiusy) ) {
 
                     return 1;
                 }
-                else//falls keine Kollision
+                else//falls keine Kollision | no collision
                     return -1;
 
 
 
             case 3:
-                //kontrolliere mit welchem Block genau die Figur kollidiert
+                //kontrolliere mit welchem Block Index genau die Figur kollidiert
+                //get the respective block index colliding with the figure
                 if ( (figur.getX()>blockx2 - collideradiusx && figur.getX()<blockx2 + collideradiusx) &&
                         (figur.getY()>blocky2 - collideradiusy && figur.getY()<blocky2 + collideradiusy) ) {
 
                     return 2;
                 }
-                else//falls keine Kollision
+                else//falls keine Kollision | no collision
                     return -1;
 
             case 4:
-                //kontrolliere mit welchem Block genau die Figur kollidiert
+                //kontrolliere mit welchem Block Index genau die Figur kollidiert
+                //get the respective block index colliding with the figure
                 if ( (figur.getX()>blockx3 - collideradiusx && figur.getX()<blockx3 + collideradiusx) &&
                         (figur.getY()>blocky3 - collideradiusy && figur.getY()<blocky3 + collideradiusy) ) {
 
@@ -699,7 +709,7 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
                     return 6;
                 }
-                else//falls keine Kollision
+                else//falls keine Kollision | no collision
                     return -1;
 
 
@@ -710,7 +720,7 @@ public class TutorialSurfaceView extends SurfaceView implements SurfaceHolder.Ca
 
                     return 0;
                 }
-                else//falls keine Kollision
+                else//falls keine Kollision | no collision
                     return -1;
 
         }

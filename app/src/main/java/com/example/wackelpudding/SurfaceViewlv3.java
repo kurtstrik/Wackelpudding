@@ -156,6 +156,8 @@ public class SurfaceViewlv3 extends SurfaceView implements SurfaceHolder.Callbac
 		
 		setFocusable(true); // um events handeln zu koennen
 	}
+
+
 	protected void onDraw(Canvas canvas) {
     	canvas.drawBitmap(hintergrund,0,0,null);
 		    	

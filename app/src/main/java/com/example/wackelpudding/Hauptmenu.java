@@ -26,7 +26,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
 
 	private MediaPlayer background;
 
-	boolean volume;//dazu da, um Musik aus/an-Wahl konstant zu halten
+	boolean volume;//dazu da, um Musik aus/an-Wahl konstant zu halten | keeps track if music is on/off
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,16 +60,9 @@ public class Hauptmenu extends Activity implements OnClickListener{
         else {
         	Option.setText(getResources().getString(R.string.dialog5));
         }
-        
-        
-    //    Score =(Button)findViewById(R.id.Button3);
-     //   Score.setOnClickListener(this);
-                    
+
         Help =(Button)findViewById(R.id.Button4);
         Help.setOnClickListener(this);
-        
-        Schummel =(Button)findViewById(R.id.SchummelButton);
-        Schummel.setOnClickListener(this);
 
         Tutorial =(Button)findViewById(R.id.Button5);
 		Tutorial.setOnClickListener(this);
@@ -80,8 +73,6 @@ public class Hauptmenu extends Activity implements OnClickListener{
 		mittel.startAnimation(b);
 		Animation c = AnimationUtils.loadAnimation(this, R.anim.menu_load);
 		dunkel.startAnimation(c);
-
-        
     }
 
     /*
@@ -95,7 +86,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
     public void onClick(View v) {
 
         	if (v==Start) {
-				background.stop();//aktuelle Musik vor Wechsel beenden
+				background.stop();//aktuelle Musik vor Wechsel beenden | stop current music before activity change
 				background.release();
         	Intent myIntent = new Intent(this, Level0Activity.class);
         	myIntent.putExtra("checker", volume);
@@ -103,10 +94,8 @@ public class Hauptmenu extends Activity implements OnClickListener{
         	}
         	else if (v==Option){
         		
-        		
-        		
         		if (volume) {
-					//Musik deaktivieren
+					//Musik deaktivieren | turn music off
 
 					if(background.isPlaying())
         				background.pause();
@@ -116,7 +105,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
         		}
         		else {
 
-        			//Musik starten
+        			//Musik starten | start music
 					if(!background.isPlaying()) {
 						background.setVolume(0.3f, 0.3f);
 						background.start();
@@ -130,7 +119,7 @@ public class Hauptmenu extends Activity implements OnClickListener{
         	}
 
         	else if(v==Tutorial){
-				background.stop();//aktuelle Musik vor Wechsel beenden
+				background.stop();//aktuelle Musik vor Wechsel beenden | stop current music before activity change
 				background.release();
 				Intent myIntent = new Intent(this, TutorialActivity.class);
 				myIntent.putExtra("checker", volume);

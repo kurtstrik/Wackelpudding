@@ -1,5 +1,6 @@
 package com.example.wackelpudding;
 
+import android.annotation.SuppressLint;
 import android.view.SurfaceHolder;
 
 import android.graphics.Canvas;
@@ -41,7 +42,8 @@ public class MainThread1 extends Thread {
 	
 	
 	
-	public void run() {
+	@SuppressLint("WrongCall")
+    public void run() {
 		Canvas c;
 		while(running) {
 			c = null;

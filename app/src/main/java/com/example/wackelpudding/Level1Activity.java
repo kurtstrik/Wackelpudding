@@ -29,10 +29,11 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
-/**Author/Kurt
- * Code zu der Idee, Buttons im SurfaceView einzusetzen aus der Quelle: 
+/**
+ * Code zu der Idee, Buttons im SurfaceView einzusetzen aus der Quelle:
+ * reference source for using buttons in SurfaceView:
+ *
  * http://jwlstudios.blogspot.co.at/2012/04/how-to-add-button-to-surfaceview-in.html*/
-
 public class Level1Activity extends Activity implements OnClickListener, SeekBar.OnSeekBarChangeListener{
 	private Button ausbreiten;
 	private Button einrollen;
@@ -44,35 +45,34 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 
 	SurfaceViewlv1 GameView;
 	FrameLayout layout;
-	RelativeLayout Buttons;//das Layout in dem die Buttons zusammengelegt werden
+	RelativeLayout Buttons;//das Layout in dem die Buttons zusammengelegt werden | layout containing all the buttons
 
-
-	RelativeLayout bottomcontainer;
 	LinearLayout tempo;
 
-	Dialog dialog;//fuer Pausemenue
-	Dialog dialog2;//fuer Hilfemenue
+	Dialog dialog;//fuer Pausemenue | for the pause menu
+	Dialog dialog2;//fuer Hilfemenue | for help text menu
 	
 	private MediaPlayer background;
 	
-	boolean volume;//dazu da um Musik an/aus-wahl konstant beizubehalten
-	private Button musik;
+	boolean volume;//dazu da um Musik an/aus-wahl konstant beizubehalten |  keeps track if music is on/off
+	private Button musik;//um die Musik an/aus Schrift zu aendern, wenn drauf geklickt wird | keeps track of music on/off labeltext
 	private ProgressDialog progress;
 
-	
+	/**hier werden alle Elemente der Activity programmatisch erstellt
+	 /*creates all relevant elements for the activity programmatically*/
 	@SuppressLint({"NewApi", "ResourceType"})
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-        //entfernt Menueleisten, damit wirklich Fullscreen genutzt wird
 
+		//entfernt Menueleisten, damit wirklich Fullscreen genutzt wird
+		//removes titlebar to fully utilize the screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        
-        //damit die Buttons eine gleichmaessige Hoehe haben, wird die Screen Height bestimmt
 
+		//damit die Buttons eine gleichmaessige Hoehe haben, wird die Screen Height bestimmt
+		//measuring screen height and adjust buttons accordingly
         Display display = getWindowManager().getDefaultDisplay();
         Point displaySize = new Point();
         if (android.os.Build.VERSION.SDK_INT >= 13) {
@@ -86,11 +86,6 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
             displaySize.y = metrics.heightPixels;            
         }
 
-
-
-
-		//GameView.width = displaySize.x;
-		//GameView.height = displaySize.y;
 
 		GameView = new SurfaceViewlv1(this);
 
@@ -110,10 +105,9 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
         ausbreiten.setId(2);
         hecht.setId(3);
         pause.setId(4);
-        
-        //jeder Button soll von Breite her WRAP_CONTENT und von der Hoehe her 1/4 des Bildschirms haben
 
-
+		//jeder Button soll von Breite her WRAP_CONTENT und von der Hoehe her 1/4 des Bildschirms haben
+		// each button has width- WRAP_CONTENT and height 1/4 of the screen height set
 		RelativeLayout.LayoutParams b1 = new LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT,
 				(int)(displaySize.y-displaySize.y/10)/4);
@@ -142,8 +136,6 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 				RelativeLayout.LayoutParams.WRAP_CONTENT);
 
 		bottomparams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-		//  bottomparams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-
 
 		slider = new SeekBar(this);
 		slider.setLayoutParams(new ViewGroup.LayoutParams(
@@ -155,16 +147,6 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 
 		RelativeLayout.LayoutParams bottom = new LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		bottom.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-
-
-		//    bottom.gravity = Gravity.CENTER;
-		//      bottom.bottomMargin = 10;
-
-
-
-      /*  tempotext.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));*/
 
 		tempotext.setLayoutParams(bottom);
 		tempotext.setText("Speed: 5");
@@ -178,9 +160,8 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 		tempo.setGravity(Gravity.CENTER);
 		tempo.setOrientation(LinearLayout.VERTICAL);
 
-
-
-        //Buttons mit dem entsprechenden Image versehen
+		//Buttons mit dem entsprechenden Image versehen
+		//set each button with respective image
         ausbreiten.setBackgroundResource(R.drawable.zurueck);
         einrollen.setBackgroundResource(R.drawable.abprall);
         hecht.setBackgroundResource(R.drawable.durch);
@@ -195,8 +176,8 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 
 		Buttons.addView(tempo);
 
-        //damit die Buttons rechts am Rand sind und klickbar
-
+		//damit die Buttons rechts am Rand sind und klickbar
+		//places each button on right side and set onclick
         b1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);  
         ausbreiten.setLayoutParams(b1);
         ausbreiten.setOnClickListener(this);
@@ -219,12 +200,13 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
         layout.addView(GameView);  
         layout.addView(Buttons);
 
-		new LoadView().execute();//Ladescreen ausfuehren
+		new LoadView().execute();//Ladescreen ausfuehren | execute loading screen
 
-
-        
 	}
 
+	/** Behandelt die Aenderungen des Speedsliders, setzt sie bei der Figur um und gibt diese als Textanzeige aus.
+	 *   takes care of changes from the speedslider, changes speed of the Figure and gives an updated output.
+	 * */
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progres, boolean b) {
 		//  int stepsize = GameView.getFigur().getMovement().getxv();
@@ -237,8 +219,7 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 		GameView.getFigur().setMovement(result);
 
 
-		tempotext.setText("Speed: "+(progres/(stepsize/2))/2);
-
+		tempotext.setText("Speed: "+result/2);
 
 	}
 
@@ -259,14 +240,15 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 		return true;
 	}
 
+	//Code dazu aus: http://www.41post.com/4588/programming/android-coding-a-loading-screen-part-1
 	private class LoadView extends AsyncTask<Void, Integer, Void>
 	{
 		//Before running code in separate thread
 		@Override
 		protected void onPreExecute()
 		{
-			progress = ProgressDialog.show(Level1Activity.this,"Ladevorgang...",
-					"Level 1 wird geladen. Bitte warten...", false, false);
+			progress = ProgressDialog.show(Level1Activity.this,getResources().getString(R.string.loadingtitle),
+					getResources().getString(R.string.loadstage1), false, false);
 		}
 
 		//The code to be executed in a background thread.
@@ -338,10 +320,7 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 
 	@Override
 	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		//Quelle fuer Dialogmenu: http://www.helloandroid.com/tutorials/how-display-custom-dialog-your-android-application
-    	 	
-		//signalisiert der Surface View, dass ein Button/legitimer Touch gedrueckt/erfolgt ist. das Bitmap der jeweiligen Figur wird entsprechend des Buttons gesetzt
+
 		if (arg0==einrollen) {
 			GameView.touched();
 			GameView.getFigur().setBitmap(GameView.geteinrollen());
@@ -356,8 +335,9 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 			GameView.getFigur().setBitmap(GameView.gethecht());			
 		}
 		
-		//falls pausiert wird, soll der MainThread0 nicht updaten und ein Dialog Fenster aufgerufen werden
-
+		/*falls pausiert wird, soll der MainThread0 nicht updaten und ein Dialog Fenster aufgerufen werden |
+          if paused, pause the MainThread0 und call a dialogue window
+          Quelle fuer Dialogmenu: http://www.helloandroid.com/tutorials/how-display-custom-dialog-your-android-application */
 		else if (arg0==pause) {
 		
 			GameView.getthread().setRunning(false);
@@ -371,10 +351,6 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 			back.setOnClickListener(new OnClickListener() {
 				@Override
 					public void onClick(View v) {
-					;
-
-					//dialog nicht als lokale Variable, weil dismiss, cancel sonst nicht nutzbar
-					
 					dialog.cancel();
 					GameView.resumen();
 					
@@ -382,7 +358,7 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 				});
 			musik = (Button)dialog.findViewById(R.id.button2);
 			
-			//falls Musik an -> Buttonschrift ebenfalls Musik an, andernfalls Musik aus
+
 			if (background.isPlaying()) {
 				musik.setText(getResources().getString(R.string.dialog2));
 			}
@@ -393,21 +369,19 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 			musik.setOnClickListener(new OnClickListener() {
 				@Override
 					public void onClick(View v) {
-					;
 
-					//dialog nicht als lokale Variable, weil dismiss, cancel sonst nicht nutzbar
 					if (background.isPlaying()) {
 						background.stop();
 
-						//nach klicken ebenfalls Buttonschrift und boolean fuer konstante Wahl aendern
+
 						musik.setText(getResources().getString(R.string.dialog5));
 						volume = false;
 					}
 					//Code aus: http://stackoverflow.com/questions/2969242/problems-with-mediaplayer-raw-resources-stop-and-start
 					else {
 
-						//falls Musik aus ist, soll ein neues "Lied"-Objekt zugeteilt werden
-
+							/*falls Musik aus ist, soll ein neues "Lied"-Objekt zugeteilt werden
+                          if music is off, create a new song for the MediaPlayer*/
 						background = MediaPlayer.create(getApplicationContext(), R.raw.sim);
 						background.setVolume(0.5f, 0.5f);
 						background.start();
@@ -425,8 +399,9 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 			help.setOnClickListener(new OnClickListener() {
 				@Override
 					public void onClick(View v) {
-					//erzeugt neuen Dialog im Dialog
 
+					/*erzeugt neuen Dialog im Dialog |
+                      creates a new Dialog within current Dialog */
 					dialog2 = new Dialog(Level1Activity.this);
 					dialog2.setContentView(R.layout.activity_hilfe);
 					dialog2.setTitle("Tutorial");
@@ -435,7 +410,7 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 					back2.setOnClickListener(new OnClickListener() {
 						@Override
 							public void onClick(View v) {
-							;
+
 							dialog2.cancel();
 							
 						}
@@ -447,8 +422,8 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 			
 			Button menu = (Button)dialog.findViewById(R.id.button4);
 
-			//schliesst alle relevanten Prozesse, damit sauber beendet wird
-
+			/*schliesst alle relevanten Prozesse, damit sauber beendet wird |
+              before calling a new activity, close all processes in current activity*/
 			menu.setOnClickListener(new OnClickListener() {
 			@Override
 				public void onClick(View v) {
@@ -469,11 +444,17 @@ public class Level1Activity extends Activity implements OnClickListener, SeekBar
 			
 		
 	}
-	/**Hilfsmethoden fuer SurfaceView*/
+
+	/**@return enthaelt aktuelle Musik | get the current music in the MediaPlayer
+	 *
+	 * */
     public MediaPlayer getmusic() {
     	return background;
     }
-   
+
+	/**@return ist Musik an/aus? | music on/off?
+	 *
+	 * */
  	public boolean getvol() {
  		return volume;
  	}

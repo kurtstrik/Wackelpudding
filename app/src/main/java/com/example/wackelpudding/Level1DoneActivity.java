@@ -40,7 +40,7 @@ public class Level1DoneActivity extends Activity implements OnClickListener{
 	@Override
     public void onClick(View v) {
 		//nimmt den boolean Wert aus dem vorherigen Aufruf und gibt diesen weiter
-
+		//takes the boolean from previous call and passes it on
         	 volume = getIntent().getBooleanExtra("checker", volume);
         	
         	if (v==next) {

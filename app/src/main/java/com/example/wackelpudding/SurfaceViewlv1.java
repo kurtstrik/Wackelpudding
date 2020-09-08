@@ -15,17 +15,20 @@ import android.content.Context;
 import android.view.SurfaceHolder;
 
 import java.util.*;
-/** @author-Kurt
- * Teile des Codes aus den Folien, andere Teile aus der Quelle:
+
+/**
+ * Teile aus der Quelle:
+ * references used:
+ *
  * http://obviam.net/index.php/displaying-graphics-with-android/
  * http://obviam.net/index.php/moving-images-on-the-screen-with-android/*/
 public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callback {
 	
 	private MainThread1 thread;
-	private boolean touched;//wird ein Button gedrueckt?
+	private boolean touched;//wird ein Button gedrueckt? | was a button touched?
 	private Bitmap hintergrund = BitmapFactory.decodeResource(getResources(), R.drawable.hintergrund2);
-	
-	//Bitmaps fuer die Figur Posen
+
+	//Bitmaps fuer die Figur Posen | bitmaps for the figure poses
 	private Bitmap einrollen = BitmapFactory.decodeResource(getResources(), R.drawable.einrollera);
 	private Bitmap einrollen2 = BitmapFactory.decodeResource(getResources(), R.drawable.einrollerb);
 	private Bitmap einrollen3 = BitmapFactory.decodeResource(getResources(), R.drawable.einrollerc);
@@ -40,22 +43,22 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	private Bitmap hecht4 = BitmapFactory.decodeResource(getResources(), R.drawable.hechta);
 	
 	private Figur figur;
-	
-	//es gibt 12 Bloecke in diesem Level
+
+	//es gibt 12 Bloecke in diesem Level | there are 12 blocks in this level
 	private Vector<AnimatedBlock> blocke = new Vector<AnimatedBlock>(12);
-	//es gibt 10 Fallen in diesem Level
+	//es gibt 10 Fallen in diesem Level | there are 10 traps in this level
 	private Vector<AnimatedFalle> falle = new Vector<AnimatedFalle>(10);
-	
-	//Bitmaps fuer Rotation der Bloecke
+
+	//Bitmaps fuer Rotation der Bloecke | bitmaps for rotation of the blocks
 	private Bitmap a = BitmapFactory.decodeResource(getResources(), R.drawable.block_a);
 	private Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.block_b);
 	private Bitmap c = BitmapFactory.decodeResource(getResources(), R.drawable.block_c);
 	private Bitmap d = BitmapFactory.decodeResource(getResources(), R.drawable.block_d);
 	
-	//Bitmap fuer fixen Block
+	//Bitmap fuer fixen Block | bitmap for a fixed block
 	private Bitmap c2 = BitmapFactory.decodeResource(getResources(), R.drawable.block_c_locked);
-	
-	//Bitmaps fuer Fallen
+
+	//Bitmaps fuer Fallen | bitmaps for the traps
 	private Bitmap e = BitmapFactory.decodeResource(getResources(), R.drawable.fallea);
 	private Bitmap f = BitmapFactory.decodeResource(getResources(), R.drawable.fallea2);
 	private Bitmap g = BitmapFactory.decodeResource(getResources(), R.drawable.fallea3);
@@ -73,11 +76,11 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	private Bitmap Eingang = BitmapFactory.decodeResource(getResources(), R.drawable.eingang);
 	private Bitmap Ausgang = BitmapFactory.decodeResource(getResources(), R.drawable.ausgangb);
 
-	private int parameter = 10;
+	private int parameter = 10;//Geschwindigkeit der Figur | figure speed
 	private int width = hintergrund.getWidth();
 	private int height = hintergrund.getHeight();
 
-	//diverse wichtige Koordinaten zur Platzierung
+	//diverse wichtige Koordinaten zur Platzierung | various important coordinates for placing the objects
 	private int x0 ;
 	private int x1 ;
 	private int x2 ;
@@ -95,15 +98,17 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	private int y2 ;
 	private int y3 ;
 	private int y4 ;
-	
-	//dazu da um bei Levelabschluss Musik richtig zu beenden
+
+	//dazu da um bei Levelabschluss Musik richtig zu beenden | properly stops music when quitting
 	private MediaPlayer helper;
+
 	//dazu da, weil in diesem Level auch fixierte Bloecke ohne Rotation da sind
+	//important for differentiating between normal/fixed block
 	private boolean rotate = true;
 	
 	public SurfaceViewlv1(Context context) {
         super(context);
-	        // adding the callback (this) to the surface holder to intercept events
+	    // adding the callback (this) to the surface holder to intercept events
         getHolder().addCallback(this);
 
 		x0 = (width/24)*2;
@@ -127,7 +132,8 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 
 		figur = new Figur(einrollen, x0, y2);
 
-        //erstellt die Bloecke an den entsprechenden Stellen
+		//erstellt die Bloecke an den entsprechenden Stellen
+		//creates the blocks at designated places
 		blocke.add(new AnimatedBlock(c2,x2,y0));
 		blocke.add(new AnimatedBlock(a,b,c,d,x2,y2));
 		blocke.add(new AnimatedBlock(d,a,b,c,x2,y4));
@@ -140,9 +146,9 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 		blocke.add(new AnimatedBlock(b,c,d,a,x8,y0));
 		blocke.add(new AnimatedBlock(c,d,a,b,x8,y2));
 		blocke.add(new AnimatedBlock(b,c,d,a,x8,y4));
-		
-	
+
 		//erstellt die Fallen an den entsprechenden Stellen
+		//creates traps at designated places
 		falle.add(new AnimatedFalle(j,k,l,m,n,x1, y0,5,5));
 		falle.add(new AnimatedFalle(j,k,l,m,n,x1, y4,5,5));
 		falle.add(new AnimatedFalle(j,k,l,m,n,x3, y2, 5,5));
@@ -155,12 +161,18 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 		falle.add(new AnimatedFalle(j,k,l,m,n,x9, y4, 5,5));
 		
 		
-		thread = new MainThread1(getHolder(), this); // gameloop erstellen
+		thread = new MainThread1(getHolder(), this); // gameloop
 		
-		setFocusable(true); // um events handeln zu koennen
+		setFocusable(true);// um events handeln zu koennen | to handle events
 	}
 
+	/**zeichnet alle nichtstatischen Objekte in der GameLoop auf den canvas
+	 *
+	 * draws all non static objects in the gameloop on the canvas
+	 * */
 	protected void onDraw(Canvas canvas) {
+
+		//damit vorige draw calls geloescht werden | clears canvas from previous draw call
 		canvas.drawColor(0, PorterDuff.Mode.CLEAR);
 		// canvas.drawColor(Color.BLACK);
     	canvas.drawBitmap(hintergrund,0,0,null);
@@ -210,7 +222,7 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
     }
 	
 	 public void update() {
-		 //falls die Figur ans Ziel kommt
+		 //Goal
 		 if (ziel()==true) {
 
 			 //Code dazu aus: http://www.anddev.org/surfaceview_to_new_activity_issue-t8376.html
@@ -228,7 +240,7 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 		 	 return;
 		 }
 
-		 //Game Over, weil 0 Leben
+		 //Game Over
 
 		 if (figur.getLife()==0) {
 			 helper.stop();
@@ -253,8 +265,9 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 			falle.get(7).update(System.currentTimeMillis());
 			falle.get(8).update(System.currentTimeMillis());
 			falle.get(9).update(System.currentTimeMillis());
-			
-			//ist ein Button gedrueckt worden oder nicht
+
+		 //solange anfangs kein Button gedrueckt wird, bewegt sich die Figur nicht
+		 //as long as there is no button input, the figure won't move
 			if (touched == false) {
 				figur.getMovement().setxv(0);
 				figur.getMovement().setyv(0);
@@ -265,7 +278,8 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 				figur.getMovement().setyv(parameter);
 			}
 
-
+		 //wenn die Figur an eine Falle oder ausserhalb des Levels kommt
+		 //if the figure collides with a trap or gets outofbounds
 			 if (trapcollide()==true) {
 
 				 figur.loseLife();
@@ -279,18 +293,14 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 
 			 }
 
-			
-			//wenn die Figur an eine Falle oder ausserhalb des Levels kommt
-
-
 			//Kollisionsbehandlung
 			if(collision()>=0) {
 				//Hilfsvariablen
 				int t1 = collision();
 				AnimatedBlock t2 = blocke.get(t1);
 				Bitmap t3 = t2.getBitmap();
-				
-				//wenn die Figur von links kam bei der Kollision
+
+				//wenn die Figur von links kam bei der Kollision | figure came from the left
 				if (figur.getMovement().getxDirection()==Movement.right) {
 					if (figur.getBitmap()==einrollen||figur.getBitmap()==einrollen2||figur.getBitmap()==einrollen3||figur.getBitmap()==einrollen4){
 						
@@ -458,15 +468,18 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
             }
         }
     }
-    
-    /**retourniert jenen Blockindex, mit dem die Figur kollidiert
+
+	/**retourniert jenen Blockindex, mit dem die Figur kollidiert.
+	 * returns respective blockindex, colliding with the figure.
+	 *
 	 * @return int Index aus der Blockliste, der den Kollisionsblock enthaelt
 	 * */
     public int collision() {
 		 int collideradiusx = figur.getMovement().getxv();
 		 int collideradiusy = figur.getMovement().getyv();
-		
-		//die Koordinaten der Bloecke
+
+		//die Koordinaten der Bloecke | block coordinates
+
 		int blockx0 = blocke.get(0).getX();
 		int blocky0 = blocke.get(0).getY();
 		
@@ -502,12 +515,11 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 		
 		int blockx11 = blocke.get(11).getX();
 		int blocky11 = blocke.get(11).getY();
-		
-		
-		
-		
-		//kontrolliere mit welchem Block genau die Figur kollidiert
-		
+
+
+		//kontrolliere mit welchem Block Index genau die Figur kollidiert
+		//get the respective block index colliding with the figure
+
 		if ( (figur.getX()>blockx0 - collideradiusx && figur.getX()<blockx0 + collideradiusx) &&
 				(figur.getY()>blocky0 - collideradiusy && figur.getY()<blocky0 + collideradiusy) ) {
 			rotate = false;
@@ -577,14 +589,16 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 			rotate = true;
 			return 11;
 		}
-				
-		//falls keine Kollision
+
+		//falls keine Kollision | no collision
 		else {
 			return -1;
 		}
 	}
-    
-    /**diese Methode soll kontrollieren, ob sich die Figur in eine Falle bewegt
+
+	/**diese Methode soll kontrollieren, ob sich die Figur in eine Falle bewegt
+	 * check if figure collides with a trap
+	 *
 	 * @return boolean Wert, ob Kollision mit Falle erfolgt ist
 	 * */
 	public boolean trapcollide(){
@@ -646,7 +660,9 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	}
 
 	/**Hilfsmethode fuer Activity bei Button press der Pose, damit das richtige Bitmap der Pose bzglich der Richtung kommt
-	 * @return Bitmap Pose entsprechend der Richtung
+	 * returns the correct bitmap in regards to the figure movement. this methods gets called by the activity associated with this SurfaceView
+	 *
+	 * @return Einrollen Pose entsprechend der Richtung | rolled in pose according to the figure movement
 	 * */
     public Bitmap geteinrollen() {
 		if(figur.getMovement().getxDirection()==Movement.left) {
@@ -664,7 +680,9 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	}
 
 	/**Hilfsmethode fuer Activity bei Button press der Pose, damit das richtige Bitmap der Pose bzglich der Richtung kommt
-	 * @return Bitmap Pose entsprechend der Richtung
+	 * returns the correct bitmap in regards to the figure movement. this methods gets called by the activity associated with this SurfaceView
+	 *
+	 * @return Ausbreiten Pose entsprechend der Richtung | stretched out pose according to the figure movement
 	 * */
 	public Bitmap getausbreiten() {
 		if (figur.getMovement().getyDirection()==Movement.up||figur.getMovement().getyDirection()==Movement.down) {
@@ -676,7 +694,9 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	}
 
 	/**Hilfsmethode fuer Activity bei Button press der Pose, damit das richtige Bitmap der Pose bzglich der Richtung kommt
-	 * @return Bitmap Pose entsprechend der Richtung
+	 * returns the correct bitmap in regards to the figure movement. this methods gets called by the activity associated with this SurfaceView
+	 *
+	 * @return Hecht Pose entsprechend der Richtung | dive pose according to the figure movement
 	 * */
 	public Bitmap gethecht() {
 		if(figur.getMovement().getxDirection()==Movement.left) {
@@ -692,8 +712,10 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 			return hecht;
 		}
 	}
-	
+
 	/**ob die Figur ans Ziel kommt
+	 * check if figure reaches the goal
+	 *
 	 * @return boolean Wert, ob Ziel erreicht
 	 * */
 	public boolean ziel() {
@@ -711,7 +733,7 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 	}
 
 	public void touched() {
-		// TODO Auto-generated method stub
+
 		touched = true;
 	}
 	
@@ -719,20 +741,25 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 		helper = x;
 	}
 
-	/**Hilfsmethode fuer Activity*/
+
 	public MainThread1 getthread() {
 		return thread;
 	}
 
-	/**Quelle: http://panjutorials.de/tutorial-28-den-dialog-anzeigen-lassen-onbackpressed/
-	 * nach Aufruf des Dialogs muss ein neuer MainThread0 erstellt werden, um wieder updaten zu koennen*/
+	/**nach Aufruf des Dialogs muss ein neuer MainThread0 erstellt werden, um wieder updaten zu koennen
+	 * after finishing the dialog, a new MainThread0 is created, to resume update.
+	 *
+	 * Quelle: http://panjutorials.de/tutorial-28-den-dialog-anzeigen-lassen-onbackpressed/
+	 * */
 	public void resumen() {
 		thread = new MainThread1(getHolder(),this);
 		thread.setRunning(true);
 		thread.start();
 	}
 
-	/**dazu da um die Blocke wieder in die Anfangspostition zu rotieren*/
+	/**dazu da um die Blocke wieder in die Anfangspostition zu rotieren
+	 * returns the blocks back in original state
+	 * */
 	public void resetten() {
 		
 		blocke.get(1).setBitmaps(a,b,c,d);
@@ -748,7 +775,7 @@ public class SurfaceViewlv1 extends SurfaceView implements SurfaceHolder.Callbac
 		blocke.get(11).setBitmaps(b,c,d,a);
 	}
 
-	/**zum Setzen der Geschwindigkeit
+	/**zum Setzen der Geschwindigkeit | for setting the speed
 	 * @param i Geschwindigkeitswert 0-10
 	 * */
 	public void setParameter(int i){

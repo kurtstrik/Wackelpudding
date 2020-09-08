@@ -21,16 +21,11 @@
     <string name="Titel">HYPED UP IN WACKELPUDDING</string>
     <string name="optbutton1">Musik</string>
     <string name="optbutton2">Sprache</string>
-    <string name="optbutton3"></string>
     <string name="retour">Zurück</string>
     <string name="box1">EIN</string>
     <string name="box2">AUS</string>
     <string name="video_skip">Überspringen</string>
-    <string name="enter_hs">Gib deinen Namen ein</string>
-    <string name="allesklar">Eintragen</string>
-    <string name="enthst1a">Du hast</string>
-    <string name="enthst1b">Punkte erreicht!</string>
-    <string name="enthst1c">Bitte trage deinen Namen ein, um deinen Score zu speichern!</string>
+
     <string name="dialog0">Pausemenü</string>
     <string name="dialog1">Fortsetzen</string>
     <string name="dialog2">Musik AN</string>
@@ -122,6 +117,12 @@
     <string name="title_activity_level2_done">Level2DoneActivity</string>
     <string name="title_activity_level3">Level3Activity</string>
     <string name="title_activity_level3_done">Level3DoneActivity </string>
+    <string name="loadingtitle">Ladevorgang</string>
+    <string name="loadstage0">Level 0 wird geladen. Bitte warten...</string>
+    <string name="loadstage1">Level 1 wird geladen. Bitte warten...</string>
+    <string name="loadstage2">Level 2 wird geladen. Bitte warten...</string>
+    <string name="loadstage3">Level 3 wird geladen. Bitte warten...</string>
+    <string name="loadtutorial">Tutorial wird geladen. Bitte warten...</string>
 
-    
+
 </resources>

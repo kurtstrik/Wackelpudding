@@ -14,7 +14,9 @@ public class Figur {
 	private int y=0;
 	private int life = 3;
 
-	private Movement movement = new Movement();//wichtig fuer die Bewegung der Figur, veraendert Position und Richtung
+	//wichtig fuer die Bewegung der Figur, veraendert Position und Richtung
+	//important for the movement of the figure, changes the positioning and direction
+	private Movement movement = new Movement();
 
 	public Figur(Bitmap bitmap, int x, int y) {
 		this.bitmap = bitmap;
@@ -60,7 +62,10 @@ public class Figur {
 		this.y = y;
 		
 	}
-	//einfaches life -=life; nicht moeglich, weil bei einmaliger Fallenkollision alle Leben abgezogen wurden
+
+	/**einfaches life -=life; nicht moeglich, weil bei einmaliger Fallenkollision alle Leben abgezogen wurden
+	 *   workaround because decrement instantly deducts all lifes
+	 * */
 	public void loseLife() {
 		if (life == 3) {
 			life = 2;
@@ -71,7 +76,6 @@ public class Figur {
 		else {
 			life = 0;
 		}
-		
 	}
 	
 	public int getLife() {
@@ -80,28 +84,22 @@ public class Figur {
 	
 	public void draw(Canvas canvas) {
 	    canvas.drawBitmap(bitmap, x, y, null);
-
 	}
-	
-	
 	
 	/**
 	 * je nachdem, welche Richtungsparameter gegeben sind, bewegt sich die Figur entsprechend
+	 *
+	 * 	update the movement of the figure according to the direction
 	 */
 	public void update() {
 		if(movement.getxDirection()==Movement.right) {
 			
 				x+= movement.getxv()*movement.getxDirection();
-				
 			
 		}
 		
 		if(movement.getxDirection()==Movement.left) {
-			
 				x+= movement.getxv()*movement.getxDirection();
-				
-			
-			
 		}
 		
 		else {
@@ -117,6 +115,5 @@ public class Figur {
 		}
 		
 	}
-	
 	
 }

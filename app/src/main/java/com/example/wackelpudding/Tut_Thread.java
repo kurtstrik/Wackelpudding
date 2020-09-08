@@ -1,5 +1,6 @@
 package com.example.wackelpudding;
 
+import android.annotation.SuppressLint;
 import android.view.SurfaceHolder;
 
 import android.view.SurfaceView;
@@ -7,7 +8,7 @@ import android.view.SurfaceView;
 import android.graphics.Canvas;
 
 
-/**author-Kurt
+/**
  * Quelle aus den Folien und aus den Links:
  * http://obviam.net/index.php/a-very-basic-the-game-loop-for-android/
  http://obviam.net/index.php/the-android-game-loop/*/
@@ -43,6 +44,7 @@ public class Tut_Thread extends Thread {
 
 
 
+    @SuppressLint("WrongCall")
     public void run() {
         Canvas c;
         while(running) {

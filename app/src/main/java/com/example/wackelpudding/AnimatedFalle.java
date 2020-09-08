@@ -2,35 +2,39 @@ package com.example.wackelpudding;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import java.util.*;
-//Author-Kurt
 
-//Teile des Coddes aus folgender Quelle: http://obviam.net/index.php/sprite-animation-with-android/
+/**
+ * Teile des Codes aus folgender Quelle: http://obviam.net/index.php/sprite-animation-with-android/
+ * parts of code from: http://obviam.net/index.php/sprite-animation-with-android/
+ */
 public class AnimatedFalle {
 	private Bitmap xs;
 	private int x;
 	private int y;
 	
-	//wichtig fuer Animation
+	//wichtig fuer Animation | variables for animation
 	private Vector<Bitmap> animation = new Vector<Bitmap>(5);
 	private int frameNr;
 	private int currentFrame;
 	private long frameTicker;
 	private int framePeriod;
-	
-	/**erstellt eine unsichtbare Falle, eventuell fuer Randbehandlung*/
+
 	public AnimatedFalle(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
 	/**
-	 * @param bitmap
-	 * @param x
-	 * @param y
+	 * speichert die Animationsbilder in einen Vektor, currentFrame gibt den Index des aktuellen Bildes aus
+	 *  saves animation images in a vector, currentFrame returns index of current image
+	 *
+	 * @param bitmap Bilder zum Abspielen der Animation| images for the animation
+	 * @param x x-Koordinate der Bilder | x-coordinate for the image
+	 * @param y y-Koordinate der Bilder | y-coordinate for the image
 	 * @param fps
 	 * @param frameCount
 	 *
-	 * speichert die Animationsbilder in einen Vektor, currentFrame gibt den Index des aktuellen Bildes aus*/
+	 * */
 	public AnimatedFalle(Bitmap bitmap, Bitmap bitmap_b, Bitmap bitmap_c, Bitmap bitmap_d, Bitmap bitmap_e, int x, int y, int fps, int frameCount) {
 		animation.add(bitmap);
 		animation.add(bitmap_b);
@@ -78,7 +82,7 @@ public class AnimatedFalle {
 		}
 		
 	}
-	/**gibt den Index des aktuellen Bitmap-Vectors aus*/
+	/**@return int Index des aktuellen Bitmaps | index of current bitmap in the image-list*/
 	public int getcurrentFrame() {
 		return currentFrame;
 	}
