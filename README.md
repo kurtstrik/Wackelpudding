@@ -14,7 +14,7 @@ unter folgenden Bedingungen getestet:
 
 This application starts and runs in landscape mode.
 
-testet under following conditions:
+tested under following conditions:
 
 - 720 x 1280 xhdpi! CAUTION: testing on other resolutions on your own risk (that is because certain graphics are tailored to the given resolution)
 - Android 6.0 Version (but compiled at API 16 Android 4.1)
