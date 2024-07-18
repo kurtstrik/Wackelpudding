@@ -102,6 +102,8 @@ private Bitmap drawit;//aktuelles Bitmap| current bitmap
 	 * replaces current bitmap with the next one in line.
 	 * */
 	public void rotate(){
+
+		// TODO: switch statement
 		if (drawit==a) {
 			drawit = b;
 		}

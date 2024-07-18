@@ -67,6 +67,8 @@ public class Figur {
 	 *   workaround because decrement instantly deducts all lifes
 	 * */
 	public void loseLife() {
+
+		// TODO: switch statement
 		if (life == 3) {
 			life = 2;
 		}
@@ -92,6 +94,9 @@ public class Figur {
 	 * 	update the movement of the figure according to the direction
 	 */
 	public void update() {
+
+		// TODO: switch statement
+
 		if(movement.getxDirection()==Movement.right) {
 			
 				x+= movement.getxv()*movement.getxDirection();
