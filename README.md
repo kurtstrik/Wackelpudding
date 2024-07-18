@@ -7,6 +7,9 @@ Ausbreiten: Reflektion der Bewegung um 180°
 Einrollen: Reflektion der Bewegung um 90°, sofern Block richtig steht.
 Hecht: Figur gleitet durch den Block durch
 
+![](https://github.com/kurtstrik/Wackelpudding/tree/master/app/src/main/res/drawable/preview.gif)
+
+
 Diese Applikation startet und läuft automatisch im Landscape/Waagrechten Modus
 
 unter folgenden Bedingungen getestet:
@@ -17,6 +20,13 @@ unter folgenden Bedingungen getestet:
 
 -------------------------------------
 1st Android project, a little 2D game , as part of an university course assignment. Done in Android Studio and revamped.
+
+- goal of the game is to move the figure to the endpoints. once started, the figure will constantly move.
+- indirect movement through 3 stances & interaction with obstacles:
+stretch out: bounce back by 180°
+roll in: bounce by 90°, depending on block orientation
+pike: move straight through the obstacle
+
 
 This application starts and runs in landscape mode.
 
