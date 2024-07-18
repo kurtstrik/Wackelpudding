@@ -14,11 +14,12 @@ Diese Applikation startet und läuft automatisch im Landscape/Waagrechten Modus
 
 unter folgenden Bedingungen getestet:
 
-- 720 x 1280 Auflösung xhdpi 
+- 720 x 1280 Auflösung xhdpi WICHTIG!
 - Android 6.0 Version (aber kompiliert auf API 16 Android 4.1)
 
 > [!CAUTION]
-nicht empfehlenswert diese Applikation auf anderer Auflösung zu testen.
+Auflösung 720 x 1280 benutzen!
+es ist nicht empfehlenswert diese Applikation auf anderer Auflösung zu testen.
 (das liegt daran, dass gewisse Grafiken auf diese Größe ausgerichtet sind.)
 
 -------------------------------------
@@ -35,8 +36,8 @@ This application starts and runs in landscape mode.
 
 tested under following conditions:
 
-- 720 x 1280 xhdpi! 
+- 720 x 1280 xhdpi! important
 - Android 6.0 Version (but compiled at API 16 Android 4.1)
 
 > [!CAUTION]
-testing on other resolutions at your own risk (that is because certain graphics are tailored to the given resolution)
+use 720 x1280. testing on other resolutions at your own risk (that is because certain graphics are tailored to the given resolution)
