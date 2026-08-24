@@ -2,7 +2,7 @@
 ![](https://github.com/kurtstrik/Wackelpudding/blob/master/app/src/main/res/drawable/smallest.gif)
 
 # Wackelpudding
-1st Android project , ein kleines 2D Spiel im Rahmen eines Studentenprojekts in Android Studio in Java erstellt und aufbereitet.
+1. Android project , ein kleines 2D Spiel im Rahmen eines Studentenprojekts in Android Studio in Java erstellt und aufbereitet.
 
 - Ziel des Spiels: die Figur von Start zum Endpunkt zu bringen. Die Figur ist immer in Bewegung sobald gestartet. 
 - indirekte Steuerung durch 3 diverse Haltungen + Interaktion mit Blöcken:
